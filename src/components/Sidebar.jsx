@@ -1,5 +1,6 @@
-const SideBar = ({ selectedTab, setSelectedTab }) => {
+import { Link } from "react-router-dom";
 
+const SideBar = () => {
     return (
         <>
             <div
@@ -22,10 +23,10 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                 </a>
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
-                    <li className="nav-item" onClick={()=>setSelectedTab("Home")}>
-                        <a
-                            href="#"
-                            className={`nav-link text-white ${selectedTab === 'Home' && 'active'}`}
+                    <li className="nav-item">
+                        <Link
+                            to="/"
+                            className="nav-link text-white"
                             aria-current="page"
                         >
                             <svg
@@ -37,10 +38,10 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                                 <use xlinkHref="#home"></use>
                             </svg>
                             Home
-                        </a>
+                        </Link>
                     </li>
-                    <li onClick={()=>setSelectedTab("Create Post")}>
-                        <a href="#" className={`nav-link text-white ${selectedTab === 'Create Post' && 'active'}`}>
+                    <li>
+                        <Link to="/create-post" className="nav-link text-white">
                             <svg
                                 className="bi pe-none me-2"
                                 width="16"
@@ -50,7 +51,7 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                                 <use xlinkHref="#speedometer2"></use>
                             </svg>
                             Create Post
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 <hr />
@@ -68,7 +69,7 @@ const SideBar = ({ selectedTab, setSelectedTab }) => {
                             height="32"
                             className="rounded-circle me-2"
                         />
-                        <strong>mdo</strong>
+                        <strong>madhav</strong>
                     </a>
                     <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
                         <li>

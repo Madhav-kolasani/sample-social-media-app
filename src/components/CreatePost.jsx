@@ -1,32 +1,33 @@
 import { useContext, useRef } from "react";
-import {PostList} from "../store/post-list-store";
+import { PostList } from "../store/post-list-store";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
-const {addPost} = useContext(PostList)
-  const userIdElement = useRef();
-  const postTitleElement = useRef();
-  const postBodyElement = useRef();
-  const reactionsElement = useRef();
-  const tagsElement = useRef();
+    const { addPost } = useContext(PostList);
+    const navigate = useNavigate();
+    const userIdElement = useRef();
+    const postTitleElement = useRef();
+    const postBodyElement = useRef();
+    const reactionsElement = useRef();
+    const tagsElement = useRef();
 
-  const handleSubmit = (event)=>{
-    event.preventDefault();
-    const userId = userIdElement.current.value;
-    const postTitle = postTitleElement.current.value;
-    const postBody = postBodyElement.current.value;
-    const reactions = reactionsElement.current.value;
-    const tags = tagsElement.current.value.split(" ");
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const userId = userIdElement.current.value;
+        const postTitle = postTitleElement.current.value;
+        const postBody = postBodyElement.current.value;
+        const reactions = reactionsElement.current.value;
+        const tags = tagsElement.current.value.split(" ");
 
-    userIdElement.current.value = "";
-    postTitleElement.current.value="";
-    postBodyElement.current.value = "";
-    reactionsElement.current.value = "";
-    tagsElement.current.values = "";
+        userIdElement.current.value = "";
+        postTitleElement.current.value = "";
+        postBodyElement.current.value = "";
+        reactionsElement.current.value = "";
+        tagsElement.current.values = "";
 
-
-    addPost(userId, postTitle, postBody, reactions, tags);
-
-  }
+        addPost(userId, postTitle, postBody, reactions, tags);
+        // navigate("/");
+    };
     return (
         <>
             <form className="create-post" onSubmit={handleSubmit}>
@@ -67,7 +68,7 @@ const {addPost} = useContext(PostList)
                         placeholder="Tell us more about it..."
                     />
                 </div>
-                                <div className="mb-3">
+                <div className="mb-3">
                     <label htmlFor="reactions" className="form-label">
                         No of reactions
                     </label>

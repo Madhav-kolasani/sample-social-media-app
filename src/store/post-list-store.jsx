@@ -16,7 +16,7 @@ const postListReducer = (currPostList, action) => {
     }else if(action.type == 'ADD_POST'){
         newPostList = [action.paylode, ...currPostList];
     } else if (action.type == "ADD_INITIAL_POSTS") {
-        newPostList = action.paylode.posts;
+        newPostList = [...currPostList, ...action.paylode.posts];
     }
     return newPostList;
 };
